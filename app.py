@@ -5,13 +5,13 @@ import tensorflow as tf
 app = Flask(__name__)
 
 # Load model
-interpreter = tf.lite.Interpreter(model_path="emotion_model.tflite")
+interpreter = tf.lite.Interpreter(model_path="emotion_model_good.tflite")
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # Label sesuai urutan training model
-labels = ['jijik', 'kecewa', 'netral', 'senang', 'terkejut']
+labels = ['kecewa', 'netral', 'senang', 'terkejut']
 
 def extract_mel(file_path):
     y, sr = librosa.load(file_path, sr=16000)
